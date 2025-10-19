@@ -12,6 +12,26 @@ def fibonacci(n: int) -> int:
         int: The nth element of the Fibonacci sequence.
     """
     pass
+    a = 0
+    b = 1
+
+    # Check if n is less than 0
+    if n < 0:
+        print("incorrect input")
+
+    # check if n = 0
+    elif n == 0:
+        return 0
+    
+    elif n ==1: 
+        return b
+    else:
+        for i in range(1, n):
+            c = a + b
+            a = b
+            b = c
+        return b
+print(fibonacci(9))
 
 
 def flatten_list(input_list: list) -> list:
@@ -31,7 +51,12 @@ def flatten_list(input_list: list) -> list:
     Returns:
         list: the flattened list
     """
-    pass
+    flat_list = []
+    for row in input_list:
+        flat_list.extend(row)
+    return flat_list
+# extend == += aka concatenation
+
 
 
 def print_dict(dictionary: dict) -> None:
