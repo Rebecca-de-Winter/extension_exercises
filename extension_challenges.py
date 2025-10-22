@@ -28,7 +28,17 @@ def is_palindrome(phrase: str) -> bool:
     Returns:
         booL: True if the phrase is a palindrome, False otherwise.
     """
-    pass
+    # Convert the entire string to lowercase
+    s = phrase.lower()
+    
+    # Clean the string: remove any characters that are not alphabets
+    cleaned_str = ""
+    for char in s:
+        if char.isalpha():
+            cleaned_str += char
+            
+    # Check for palindrome
+    return cleaned_str == cleaned_str[::-1]
 
 
 def string_to_nested_list(input_string: str) -> list:
@@ -52,7 +62,11 @@ def string_to_nested_list(input_string: str) -> list:
     Returns:
         The list of lists of the values in that string
     """
-    pass
+    sublist_strings = input_string.split("\n")
+    nested_list = []
+    for s in sublist_strings:
+        nested_list.append(s.split(","))
+    return nested_list
 
 
 def binary_search(list_to_search: list, value_to_find: int) -> int:
@@ -76,7 +90,23 @@ def binary_search(list_to_search: list, value_to_find: int) -> int:
     Returns:
         int: the index of the element in list_to_search, or -1 if the element can't be found.
     """
-    pass
+    low = 0
+    high = len(list_to_search) - 1
+    while low <= high:
+        mid = low + (high - low) // 2  # Calculate the middle index
+
+        # If the target is found at the middle
+        if list_to_search[mid] == value_to_find:
+            return mid
+        # If the target is greater than the middle element, search the right half
+        elif list_to_search[mid] < value_to_find:
+            low = mid + 1
+        # If the target is smaller than the middle element, search the left half
+        else:
+            high = mid - 1
+
+    # Target not found in the list/array
+    return -1
 
 def bubble_sort(list_to_sort: list) -> list:
     """
@@ -88,5 +118,23 @@ def bubble_sort(list_to_sort: list) -> list:
     Returns:
         list: the sorted list
     """
-    pass
+    # Outer loop to iterate through the list n times
+    for n in range(len(list_to_sort) - 1, 0, -1):
+        
+        # Initialize swapped to track if any swaps occur
+        swapped = False  
 
+        # Inner loop to compare adjacent elements
+        for i in range(n):
+            if list_to_sort[i] > list_to_sort[i + 1]:
+              
+                # Swap elements if they are in the wrong order
+                list_to_sort[i], list_to_sort[i + 1] = list_to_sort[i + 1], list_to_sort[i]
+                
+                # Mark that a swap has occurred
+                swapped = True
+        
+        # If no swaps occurred, the list is already sorted
+        if not swapped:
+            break
+    return list_to_sort

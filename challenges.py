@@ -80,7 +80,10 @@ def print_dict(dictionary: dict) -> None:
     Args:
         dictionary (dict): Some dictionary we want to print in a nice way.
     """
-    pass
+    for key, value in dictionary.items():
+        print(f"{key}: {value}")
+    
+
 
 def do_math(math: str) -> float:
     """
@@ -106,4 +109,17 @@ def do_math(math: str) -> float:
     Returns:
         float: The result of the math
     """
-    pass
+    parts = math.split()
+
+    num1 = float(parts[0])
+    operator = parts[1]
+    num2 = float(parts[2]) 
+
+    if operator == "+":
+        return num1 + num2
+    elif operator == "-":
+        return num1 - num2
+    elif operator =="*":
+        return num1 * num2
+    elif operator =="/":
+        return num1 / num2
